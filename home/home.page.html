@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      라이트토크
+    </ion-title>
+    <ion-button (click)="Scan()" slot="end">
+      <ion-icon name="Bluetooth"></ion-icon>
+      <p>Scan</p>
+    </ion-button>
+    <ion-button (click)="connect()" slot="end">
+      <ion-icon name="Bluetooth"></ion-icon>
+      <p>Connect</p>
+    </ion-button>
+  </ion-toolbar>
+  <table>
+    <tr>
+        <th>
+            와이파이를 먼저 설정한 후 연결하세요
+            <button class="orangebutton" (click)="presentAlert()"><ion-icon name="wifi-outline"></ion-icon>Wifi</button>
+        </th>
+        <th>
+          <button class="orangebutton" (click)="presentAlert2()"><ion-icon name="wifi-outline"></ion-icon>확인</button>
+        </th>
+    </tr>
+  </table>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-list>
+    <ion-card-content ion-item *ngFor="let device of devices">
+      <p>{{device.name || '이름 없음'}}</p>
+      <p>{{device.id}}</p>
+      <p> RSSI: {{device.rssi}}</p>
+    </ion-card-content>
+  </ion-list>
+</ion-content>
+
+<script>
+  let lastName;
+  function handleLastNameValue(event) {
+      lastName = event.target.value;
+    }
+</script>
